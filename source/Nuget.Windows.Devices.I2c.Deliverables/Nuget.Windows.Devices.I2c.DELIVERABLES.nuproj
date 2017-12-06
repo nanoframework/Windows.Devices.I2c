@@ -33,6 +33,11 @@
       <Link>content\disasm\%(RecursiveDir)%(Filename)%(Extension)</Link>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <Dependency Include="nanoFramework.CoreLibrary">
+      <Version>[1.0.0-preview038]</Version>
+    </Dependency>
+  </ItemGroup>  
   <PropertyGroup Label="Globals">
     <ProjectGuid>4AB2EACE-321A-4272-90E6-9F58FD53675E</ProjectGuid>
   </PropertyGroup>
@@ -42,7 +47,7 @@
   <Import Project="$(NuProjPath)\NuProj.props" Condition="Exists('$(NuProjPath)\NuProj.props')" />
   <PropertyGroup Label="Configuration">
     <Id>nanoFramework.Windows.Devices.I2c.DELIVERABLES</Id>
-    <Version>1.0.0-preview003</Version>
+    <Version>$(GitVersion_NuGetVersionV2)</Version>
     <Title>nanoFramework.Windows.Devices.I2c.DELIVERABLES</Title>
     <Authors>nanoFramework project contributors</Authors>
     <Owners>nanoFramework project contributors</Owners>
