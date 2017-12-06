@@ -32,7 +32,7 @@
   </ItemGroup>
   <ItemGroup>
     <Dependency Include="nanoFramework.CoreLibrary">
-      <Version>[1.0.0-preview028]</Version>
+      <Version>[1.0.0-preview038]</Version>
     </Dependency>
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -44,7 +44,7 @@
   <Import Project="$(NuProjPath)\NuProj.props" Condition="Exists('$(NuProjPath)\NuProj.props')" />
   <PropertyGroup Label="Configuration">
     <Id>nanoFramework.Windows.Devices.I2c</Id>
-    <Version>1.0.0-preview003</Version>
+    <Version>$(GitVersion_NuGetVersionV2)</Version>
     <Title>nanoFramework.Windows.Devices.I2c</Title>
     <Authors>nanoFramework project contributors</Authors>
     <Owners>nanoFramework project contributors</Owners>
