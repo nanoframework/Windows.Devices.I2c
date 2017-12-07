@@ -9,7 +9,7 @@
 
 | Component | Build Status | NuGet Package |
 |:-|---|---|
-| Class Libraries | [![Build status](https://ci.appveyor.com/api/projects/status/terbqvfdlw8po3cm?svg=true)](https://ci.appveyor.com/project/nfbot/nf-class-libraries) | [![NuGet](https://img.shields.io/nuget/dt/nanoFramework.Windows.Devices.I2c.svg)]() |
+| Class Libraries | [![Build status](https://ci.appveyor.com/api/projects/status/uv8d9warho08w7g2?svg=true)](https://ci.appveyor.com/project/nfbot/lib-windows-devices-i2c) | [![NuGet](https://img.shields.io/nuget/dt/nanoFramework.Windows.Devices.I2c.svg)](https://www.nuget.org/packages/nanoFramework.Windows.Devices.I2c) |
 
 
 ## Feedback and documentation
