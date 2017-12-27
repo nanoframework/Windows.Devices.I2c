@@ -4,12 +4,15 @@
 
 ### Welcome to the **nanoFramework** Windows.Devices.I2c Library repository!
 
+[![NuGet](https://img.shields.io/nuget/dt/nanoFramework.Windows.Devices.I2c.svg)]() [![#yourfirstpr](https://img.shields.io/badge/first--timers--only-friendly-blue.svg)](https://github.com/nanoframework/Home/blob/master/CONTRIBUTING.md)
+
 
 ## Build status
 
 | Component | Build Status | NuGet Package |
 |:-|---|---|
-| Class Libraries | [![Build status](https://ci.appveyor.com/api/projects/status/uv8d9warho08w7g2?svg=true)](https://ci.appveyor.com/project/nfbot/lib-windows-devices-i2c) | [![NuGet](https://img.shields.io/nuget/dt/nanoFramework.Windows.Devices.I2c.svg)](https://www.nuget.org/packages/nanoFramework.Windows.Devices.I2c) |
+| Windows.Devices.I2c | [![Build status](https://ci.appveyor.com/api/projects/status/uv8d9warho08w7g2/branch/master?svg=true)](https://ci.appveyor.com/project/nfbot/lib-windows-devices-i2c/branch/master) | [![NuGet](https://img.shields.io/nuget/vpre/nanoFramework.Windows.Devices.I2c.svg)](https://www.nuget.org/packages/nanoFramework.Windows.Devices.I2c/)  |
+| Windows.Devices.I2c (preview) | [![Build status](https://ci.appveyor.com/api/projects/status/uv8d9warho08w7g2?svg=true)](https://ci.appveyor.com/project/nfbot/lib-windows-devices-i2c) | [![MyGet Pre Release](https://img.shields.io/myget/nanoframework-dev/vpre/nanoFramework.Windows.Devices.I2c.svg)](https://www.myget.org/feed/nanoframework-dev/package/nuget/nanoFramework.Windows.Devices.I2c) |
 
 
 ## Feedback and documentation
