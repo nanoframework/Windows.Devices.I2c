@@ -13,7 +13,7 @@ namespace Windows.Devices.I2c
     /// </summary>
 	public sealed class I2cController
     {
-        // we can have only one instance of the SpiController
+        // we can have only one instance of the I2cController
         private static I2cController s_instance = new I2cController();
 
         internal static Hashtable s_deviceCollection = new Hashtable();
