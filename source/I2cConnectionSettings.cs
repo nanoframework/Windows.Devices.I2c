@@ -21,10 +21,10 @@ namespace Windows.Devices.I2c
         /// using the default settings of the standard mode for the bus speed and exclusive sharing mode.
         /// </summary>
         /// <param name="slaveAddress">The bus address of the inter-integrated circuit (I2C) device to which the settings of the I2cConnectionSettings should apply.
-        /// Only 7-bit addressing is supported, so the range of values that are valid is from 8 to 119.</param>
+        /// Only 7-bit addressing is supported, so the range of values that are valid is from 8 to 119 (that's 0x08 and 0x77).</param>
         public I2cConnectionSettings(Int32 slaveAddress)
         {
-            _slaveAddress = slaveAddress;
+            SlaveAddress = slaveAddress;
         }
 
         /// <summary>
@@ -67,12 +67,21 @@ namespace Windows.Devices.I2c
         /// Gets or sets the bus address of the inter-integrated circuit (I2C) device.
         /// </summary>
         /// <value>
-        /// The bus address of the I2C device. Only 7-bit addressing is supported, so the range of values that are valid is from 8 to 119.
+        /// The bus address of the I2C device. Only 7-bit addressing is supported, so the range of values that are valid is from 8 to 119 (that's 0x08 and 0x77).
         /// </value>
         public int SlaveAddress
         {
             get { return _slaveAddress; }
-            set { _slaveAddress = value; }
+            set
+            {
+                // better validate the address
+                if(value < 8 || value > 119)
+                {
+                    throw new ArgumentException();
+                }
+
+                _slaveAddress = value;
+            }
         }
     }
 }

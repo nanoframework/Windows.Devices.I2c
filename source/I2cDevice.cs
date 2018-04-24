@@ -13,21 +13,13 @@ namespace Windows.Devices.I2c
     /// </summary>
 	public sealed class I2cDevice : IDisposable
     {
-        [MethodImpl(MethodImplOptions.InternalCall)]
-        private extern void NativeInit();
-
-        [MethodImpl(MethodImplOptions.InternalCall)]
-        private extern void DisposeNative();
-
-        [MethodImpl(MethodImplOptions.InternalCall)]
-        private extern int NativeTransmit(byte[] writeBuffer, uint nbWritten, byte[] readBuffer, uint nbRead);
-        
         // this is used as the lock object 
-        // a lock is required because multiple threads can access the SPI bus
+        // a lock is required because multiple threads can access the I2C bus
         private object _syncLock = new object();
+
         private readonly int _deviceId;
         private readonly I2cConnectionSettings _connectionSettings;
-        private readonly string _i2cBus;
+        private bool _disposed;
 
         internal I2cDevice(string i2cBus, I2cConnectionSettings settings)
         {
@@ -40,7 +32,6 @@ namespace Windows.Devices.I2c
             // check if this device ID already exists
             if (!I2cController.s_deviceCollection.Contains(deviceId))
             {
-                _i2cBus = i2cBus;
                 _connectionSettings = new I2cConnectionSettings(settings.SlaveAddress)
                 {
                     BusSpeed = settings.BusSpeed,
@@ -77,7 +68,7 @@ namespace Windows.Devices.I2c
                 lock (_syncLock)
                 {
                     // check if device has been disposed
-                    if (!_disposedValue)
+                    if (!_disposed)
                     {
                         // need to return a copy so that the caller doesn't change the settings
                         return new I2cConnectionSettings(_connectionSettings);
@@ -101,7 +92,7 @@ namespace Windows.Devices.I2c
                 lock (_syncLock)
                 {
                     // check if device has been disposed
-                    if (!_disposedValue) { return _deviceId.ToString(); }
+                    if (!_disposed) { return _deviceId.ToString(); }
 
                     throw new ObjectDisposedException();
                 }
@@ -109,24 +100,18 @@ namespace Windows.Devices.I2c
         }
 
         /// <summary>
-        /// Retrieves an I2cDevice object asynchronously for the inter-integrated circuit (I2C) bus controller that has the specified plug and play device identifier, using the specified connection settings.
+        /// Retrieves an <see cref="I2cDevice"/> object for the inter-integrated circuit (I2C) bus controller that has the specified plug and play device identifier, using the specified connection settings.
         /// </summary>
-        /// <param name="i2cBus">The plug and play device identifier of the I2C bus controller for which you want to create an I2cDevice object.</param>
+        /// <param name="i2cBus">The plug and play device identifier of the I2C bus controller for which you want to create an <see cref="I2cDevice"/> object.</param>
         /// <param name="settings">The connection settings to use for communication with the I2C bus controller that deviceId specifies.</param>
         /// <returns>An operation that returns the I2cDevice object.</returns>
+        /// <remarks>
+        /// This method is specific to nanoFramework. The equivalent method in the UWP API is: FromIdAsync.
+        /// </remarks>
         public static I2cDevice FromId(String i2cBus, I2cConnectionSettings settings)
         {
             return new I2cDevice(i2cBus, settings);
         }
-
-        /// <summary>
-        /// Retrieves an Advanced Query Syntax (AQS) string for all of the inter-integrated circuit (I2C) bus controllers on the system. You can use this string with the DeviceInformation.FindAll
-        /// method to get DeviceInformation objects for those bus controllers.
-        /// </summary>
-        /// <returns>An AQS string for all of the I2C bus controllers on the system, which you can use with the DeviceInformation.FindAllAsync method to get DeviceInformation 
-        /// objects for those bus controllers.</returns>
-        [MethodImpl(MethodImplOptions.InternalCall)]
-        public static extern string GetDeviceSelector();
 
         /// <summary>
         /// Retrieves an Advanced Query Syntax (AQS) string for the inter-integrated circuit (I2C) bus that has the specified friendly name. You can use this string with the DeviceInformation.FindAll
@@ -159,11 +144,9 @@ namespace Windows.Devices.I2c
             lock (_syncLock)
             {
                 // check if device has been disposed
-                if (_disposedValue) throw new ObjectDisposedException();
-                var nbRead = (UInt32)buffer.Length;
-                var status = NativeTransmit(null, 0, buffer, nbRead);
+                if (_disposed) throw new ObjectDisposedException();
 
-                return new I2cTransferResult { BytesTransferred = nbRead, Status = (I2cTransferStatus)status };
+                return NativeTransmit(null, buffer);
             }
         }
 
@@ -187,11 +170,9 @@ namespace Windows.Devices.I2c
             lock (_syncLock)
             {
                 // check if device has been disposed
-                if (_disposedValue) throw new ObjectDisposedException();
-                var nbWritten = (UInt32) buffer.Length;
-                var status = NativeTransmit(buffer, nbWritten, null, 0);
+                if (_disposed) throw new ObjectDisposedException();
 
-                return new I2cTransferResult { BytesTransferred = nbWritten, Status = (I2cTransferStatus)status };
+                return NativeTransmit(buffer, null);
             }
         }
 
@@ -219,22 +200,17 @@ namespace Windows.Devices.I2c
             lock (_syncLock)
             {
                 // check if device has been disposed
-                if (_disposedValue) throw new ObjectDisposedException();
-                var nbWritten = (UInt32)writeBuffer.Length;
-                var nbRead = (UInt32)readBuffer.Length;
-                var status = NativeTransmit(writeBuffer, nbWritten, readBuffer, nbRead);
+                if (_disposed) throw new ObjectDisposedException();
 
-                return new I2cTransferResult { BytesTransferred = nbRead + nbWritten, Status = (I2cTransferStatus)status };
+                return NativeTransmit(writeBuffer, readBuffer);
             }
         }
 
         #region IDisposable Support
 
-        private bool _disposedValue;
-
         private void Dispose(bool disposing)
         {
-            if (!_disposedValue)
+            if (!_disposed)
             {
                 if (disposing)
                 {
@@ -244,7 +220,7 @@ namespace Windows.Devices.I2c
 
                 DisposeNative();
 
-                _disposedValue = true;
+                _disposed = true;
             }
         }
 
@@ -258,7 +234,7 @@ namespace Windows.Devices.I2c
         {
             lock (_syncLock)
             {
-                if (!_disposedValue)
+                if (!_disposed)
                 {
                     Dispose(true);
 
@@ -266,6 +242,28 @@ namespace Windows.Devices.I2c
                 }
             }
         }
+
+        #endregion
+
+        #region external calls to native implementations
+
+        /// <summary>
+        /// Retrieves an Advanced Query Syntax (AQS) string for all of the inter-integrated circuit (I2C) bus controllers on the system. You can use this string with the DeviceInformation.FindAll
+        /// method to get DeviceInformation objects for those bus controllers.
+        /// </summary>
+        /// <returns>An AQS string for all of the I2C bus controllers on the system, which you can use with the DeviceInformation.FindAllAsync method to get DeviceInformation 
+        /// objects for those bus controllers.</returns>
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        public static extern string GetDeviceSelector();
+
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        private extern void NativeInit();
+
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        private extern void DisposeNative();
+
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        private extern I2cTransferResult NativeTransmit(byte[] writeBuffer, byte[] readBuffer);
 
         #endregion
     }
