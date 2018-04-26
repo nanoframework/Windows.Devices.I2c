@@ -77,7 +77,7 @@ namespace Windows.Devices.I2c
                 // better validate the address
                 if(value < 8 || value > 119)
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentOutOfRangeException();
                 }
 
                 _slaveAddress = value;
