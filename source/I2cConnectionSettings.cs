@@ -75,7 +75,8 @@ namespace Windows.Devices.I2c
             set
             {
                 // better validate the address
-                if(value < 8 || value > 119)
+		// 0 is a valid address : General Call. Special usage but valid.
+                if (value != 0 && (value < 8 || value > 119))
                 {
                     throw new ArgumentOutOfRangeException();
                 }
