@@ -10,20 +10,23 @@
       <Platform>AnyCPU</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <PropertyGroup>
+    <GitVersion_NuGetVersionV2 Condition=" '$(GitVersion_NuGetVersionV2)' == '' ">1.0.0-preview001</GitVersion_NuGetVersionV2>
+  </PropertyGroup>
   <ItemGroup>
-    <Content Include="..\bin\$(Configuration)\Windows.Devices.I2c.dll">
+    <Content Include="..\Windows.Devices.I2c\bin\$(Configuration)\Windows.Devices.I2c.dll">
       <Link>lib\Windows.Devices.I2c.dll</Link>
     </Content>
-    <Content Include="..\bin\$(Configuration)\Windows.Devices.I2c.pdb">
+    <Content Include="..\Windows.Devices.I2c\bin\$(Configuration)\Windows.Devices.I2c.pdb">
       <Link>lib\Windows.Devices.I2c.pdb</Link>
     </Content>
-    <Content Include="..\bin\$(Configuration)\Windows.Devices.I2c.pdbx">
+    <Content Include="..\Windows.Devices.I2c\bin\$(Configuration)\Windows.Devices.I2c.pdbx">
       <Link>lib\Windows.Devices.I2c.pdbx</Link>
     </Content>
-    <Content Include="..\bin\$(Configuration)\Windows.Devices.I2c.pe">
+    <Content Include="..\Windows.Devices.I2c\bin\$(Configuration)\Windows.Devices.I2c.pe">
       <Link>lib\Windows.Devices.I2c.pe</Link>
     </Content>
-    <Content Include="..\bin\$(Configuration)\Windows.Devices.I2c.xml">
+    <Content Include="..\Windows.Devices.I2c\bin\$(Configuration)\Windows.Devices.I2c.xml">
       <Link>lib\Windows.Devices.I2c.xml</Link>
     </Content>
   </ItemGroup>
