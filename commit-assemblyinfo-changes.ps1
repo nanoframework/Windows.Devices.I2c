@@ -7,7 +7,7 @@ else
 {
     # updated assembly info files   
     git add "source\Windows.Devices.I2c\Properties\AssemblyInfo.cs"
-    git commit -m "Update assembly info file for v$env:GitVersion_NuGetVersionV2"
+    git commit -m "Update assembly info file for v$env:GitVersion_NuGetVersionV2" -m"[version update]"
     git push origin --porcelain -q > $null
     
     'Updated assembly info...' | Write-Host -ForegroundColor White -NoNewline
@@ -48,7 +48,7 @@ else
     }
     else
     {
-        $commitMessage = "Update Windows.Devices.I2c version to $env:GitVersion_AssemblySemFileVer"
+        $commitMessage = "Update Windows.Devices.I2c version to $env:GitVersion_NuGetVersionV2"
 
         # commit changes
         git add -A 2>&1
