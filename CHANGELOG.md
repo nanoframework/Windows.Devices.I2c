@@ -11,6 +11,7 @@
 
 **Documentation and other chores:**
 
+- Bumps nanoFramework.CoreLibrary from 1.0.1-preview123 to 1.0.1-preview127 [\#21](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/21)
 - Bumps nanoFramework.CoreLibrary from 1.0.1-preview118 to 1.0.1-preview123 [\#20](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/20)
 - 📦 Bumps nanoFramework.CoreLibrary from 1.0.1-preview116 to 1.0.1-preview118 [\#19](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/19)
 - 📦 Bumps nanoFramework.CoreLibrary from 1.0.1-preview106 to 1.0.1-preview116 [\#18](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/18)
