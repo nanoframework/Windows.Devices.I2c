@@ -7,14 +7,15 @@
 - Update snk to match mscorlib [\#14](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/14)
 - Use ArgumentOutOfRangeException [\#7](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/7)
 - Work on I2C device class [\#6](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/6)
-- Update mscorlib Nuget package [\#3](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/3)
 - Update project [\#1](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/1)
 
 **Documentation and other chores:**
 
+- Bumps nanoFramework.CoreLibrary from 1.0.1-preview118 to 1.0.1-preview123 [\#20](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/20)
 - 📦 Bumps nanoFramework.CoreLibrary from 1.0.1-preview116 to 1.0.1-preview118 [\#19](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/19)
 - 📦 Bumps nanoFramework.CoreLibrary from 1.0.1-preview106 to 1.0.1-preview116 [\#18](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/18)
 - Bump nanoFramework.CoreLibrary from 1.0.0-preview062 to 1.0.0-preview073 in /source [\#13](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/13)
+- Update mscorlib Nuget package [\#3](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/3)
 
 
 
