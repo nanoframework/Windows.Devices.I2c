@@ -12,6 +12,7 @@
 
 **Documentation and other chores:**
 
+- 📦 Bumps nanoFramework.CoreLibrary from 1.0.1-preview106 to 1.0.1-preview116 [\#18](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/18)
 - Bump nanoFramework.CoreLibrary from 1.0.0-preview062 to 1.0.0-preview073 in /source [\#13](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/13)
 
 
