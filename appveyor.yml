@@ -61,7 +61,7 @@ before_build:
 
     nuget restore source\nanoFramework.Windows.Devices.I2c.sln
 
-    C:\ProgramData\chocolatey\lib\GitVersion.Portable\tools\GitVersion.exe /l console /output buildserver /updateAssemblyInfo "source\nnanoFramework.Windows.Devices.I2canoFramework.Runtime.Events\Properties\AssemblyInfo.cs"
+    C:\ProgramData\chocolatey\lib\GitVersion.Portable\tools\GitVersion.exe /l console /output buildserver /updateAssemblyInfo "source\nanoFramework.Windows.Devices.I2\Properties\AssemblyInfo.cs"
 
 build_script:
 - ps: >-
