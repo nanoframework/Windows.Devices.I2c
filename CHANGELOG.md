@@ -1,7 +1,6 @@
 # Change Log
 
-## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/HEAD)
-
+## [v1.0.0](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.0.0) (2018-10-18)
 **Implemented enhancements:**
 
 - Update snk to match mscorlib [\#14](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/14)
@@ -11,6 +10,9 @@
 
 **Documentation and other chores:**
 
+- Merge back changes from Release 1.0.0 [\#26](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/26)
+- Merge 'develop' for Release 1.0.0 [\#25](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/25)
+- Bumps nanoFramework.CoreLibrary from 1.0.1-preview134 to 1.0.4 [\#24](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/24)
 - Bumps nanoFramework.CoreLibrary from 1.0.1-preview127 to 1.0.1-preview134 [\#22](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/22)
 - Bumps nanoFramework.CoreLibrary from 1.0.1-preview123 to 1.0.1-preview127 [\#21](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/21)
 - Bumps nanoFramework.CoreLibrary from 1.0.1-preview118 to 1.0.1-preview123 [\#20](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/20)
