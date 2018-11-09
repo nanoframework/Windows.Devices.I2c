@@ -30,7 +30,7 @@ namespace Windows.Devices.I2c
             var deviceId = (i2cBus[3] - 48) * 1000 + settings.SlaveAddress;
 
             // check if this device ID already exists
-            if (!I2cController.s_deviceCollection.Contains(deviceId))
+            if (!I2cController.DeviceCollection.Contains(deviceId))
             {
                 _connectionSettings = new I2cConnectionSettings(settings.SlaveAddress)
                 {
@@ -44,7 +44,7 @@ namespace Windows.Devices.I2c
                 NativeInit();
 
                 // add to device collection
-                I2cController.s_deviceCollection.Add(deviceId, this);
+                I2cController.DeviceCollection.Add(deviceId, this);
             }
             /*
             else
@@ -215,7 +215,7 @@ namespace Windows.Devices.I2c
                 if (disposing)
                 {
                     // remove from device collection
-                    I2cController.s_deviceCollection.Remove(_deviceId);
+                    I2cController.DeviceCollection.Remove(_deviceId);
                 }
 
                 DisposeNative();

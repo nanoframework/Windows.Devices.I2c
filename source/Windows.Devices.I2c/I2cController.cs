@@ -13,10 +13,46 @@ namespace Windows.Devices.I2c
     /// </summary>
 	public sealed class I2cController
     {
-        // we can have only one instance of the I2cController
-        private static I2cController s_instance = new I2cController();
+        // this is used as the lock object 
+        // a lock is required because multiple threads can access the I2C controller
+        readonly static object _syncLock = new object();
 
-        internal static Hashtable s_deviceCollection = new Hashtable();
+        // we can have only one instance of the I2cController
+        // need to do a lazy initialization of this field to make sure it exists when called elsewhere.
+        private static I2cController s_instance;
+
+        // backing field for DeviceCollection
+        private static Hashtable s_deviceCollection;
+
+        /// <summary>
+        /// Device collection associated with this <see cref="I2cController"/>.
+        /// </summary>
+        /// <remarks>
+        /// This collection is for internal use only.
+        /// </remarks>
+        internal static Hashtable DeviceCollection
+        {
+            get
+            {
+                if (s_deviceCollection == null)
+                {
+                    lock (_syncLock)
+                    {
+                        if (s_deviceCollection == null)
+                        {
+                            s_deviceCollection = new Hashtable();
+                        }
+                    }
+                }
+
+                return s_deviceCollection;
+            }
+
+            set
+            {
+                s_deviceCollection = value;
+            }
+        }
 
         /// <summary>
         /// Gets the default I2C controller on the system.
@@ -24,6 +60,17 @@ namespace Windows.Devices.I2c
         /// <returns>The default I2C controller on the system, or null if the system has no I2C controller.</returns>
         public static I2cController GetDefault()
         {
+            if (s_instance == null)
+            {
+                lock (_syncLock)
+                {
+                    if (s_instance == null)
+                    {
+                        s_instance = new I2cController();
+                    }
+                }
+            }
+
             return s_instance;
         }
 
