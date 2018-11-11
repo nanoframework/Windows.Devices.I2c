@@ -41,8 +41,13 @@ namespace Windows.Devices.I2c
                 // save device ID
                 _deviceId = deviceId;
 
-                NativeInit();
-
+                //Instantiate I2C bus once for each bus used
+                if( !I2cController.BusIdCollection.Contains(i2cBus))
+                {
+                    I2cController.BusIdCollection.Add(i2cBus);
+                    NativeInit();
+                }
+                
                 // add to device collection
                 I2cController.DeviceCollection.Add(deviceId, this);
             }
