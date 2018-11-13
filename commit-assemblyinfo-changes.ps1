@@ -23,11 +23,22 @@ if ($env:APPVEYOR_REPO_TAG -eq "true")
     $versionRegex = "\{\s*\d+\,\s*\d+\,\s*\d+\,\s*\d+\s*}"
     $assemblyFiles = (Get-ChildItem -Path ".\*" -Include "win_dev_i2c_native.cpp" -Recurse)
 
+    #  find assembly declaration
+    $assemblyDeclarationPath = (Get-ChildItem -Path ".\" -Include "sys_net_native.cpp" -Recurse)
+    $filecontent = Get-Content($assemblyDeclarationPath)
+    $assemblyChecksum  = $filecontent -match "0x.{8}"
+
     foreach($file in $assemblyFiles)
     {
+        # replace version
         $filecontent = Get-Content($file)
         attrib $file -r
         $filecontent -replace $versionRegex, $newVersion | Out-File $file -Encoding utf8
+
+        # replace checksum
+        $filecontent = Get-Content($file)
+        attrib $file -r
+        $filecontent -replace  "0x.{8}", "    $assemblyChecksum," | Out-File $file -Encoding utf8
     }
 
     # check if anything was changed
