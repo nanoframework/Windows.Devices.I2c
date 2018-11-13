@@ -41,7 +41,10 @@ namespace Windows.Devices.I2c
                 {
                     lock (_syncLock)
                     {
-                        s_deviceCollection = new Hashtable();
+                        if (s_deviceCollection == null)
+                        {
+                            s_deviceCollection = new Hashtable();
+                        }
                     }
                 }
 
@@ -67,7 +70,10 @@ namespace Windows.Devices.I2c
                 {
                     lock (_syncLock)
                     {
-                        s_busIdCollection = new ArrayList();
+                        if (s_busIdCollection == null)
+                        {
+                            s_busIdCollection = new ArrayList();
+                        }
                     }
                 }
 
@@ -90,7 +96,10 @@ namespace Windows.Devices.I2c
             {
                 lock (_syncLock)
                 {
-                    s_instance = new I2cController();
+                    if (s_instance == null)
+                    {
+                        s_instance = new I2cController();
+                    }
                 }
             }
 

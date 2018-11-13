@@ -221,6 +221,25 @@ namespace Windows.Devices.I2c
                 {
                     // remove from device collection
                     I2cController.DeviceCollection.Remove(_deviceId);
+                    /*
+                     * Clear the bus Id from the collection, only if, no other device is using the bus.
+                     * A device Id is 4 digit and starts with digit 1,2,3 etc...which is the bus Id (see FromId method)
+                     */
+                    uint busId = (uint)(_deviceId / 1000);
+                    bool hasDeviceUsingBus = false;
+                    foreach(uint existingDeviceId in I2cController.DeviceCollection.Keys)
+                    {
+                        if((uint)(existingDeviceId/1000) == busId)
+                        {
+                            hasDeviceUsingBus = true;
+                            break;
+                        }
+                    }
+                    if (!hasDeviceUsingBus)
+                    {
+                        //no more registered devices using the bus..dispose it
+                        I2cController.BusIdCollection.Remove(busId);
+                    }
                 }
 
                 DisposeNative();
