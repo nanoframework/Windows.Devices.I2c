@@ -2,7 +2,14 @@
 
 ## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.0.2-preview-004...HEAD)
+[Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.0.2-preview-007...HEAD)
+
+**Documentation and other chores:**
+
+- Fix lazy init and prevent un-necessary calls to NativeInit [\#32](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/32)
+
+## [v1.0.2-preview-007](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.0.2-preview-007) (2018-11-09)
+[Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.0.2-preview-004...v1.0.2-preview-007)
 
 **Implemented enhancements:**
 
