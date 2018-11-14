@@ -24,6 +24,9 @@ namespace Windows.Devices.I2c
         // backing field for DeviceCollection
         private static Hashtable s_deviceCollection;
 
+        // field to keep track on how many different I2C buses are being used
+        private static ArrayList s_busIdCollection;
+
         /// <summary>
         /// Device collection associated with this <see cref="I2cController"/>.
         /// </summary>
@@ -51,6 +54,35 @@ namespace Windows.Devices.I2c
             set
             {
                 s_deviceCollection = value;
+            }
+        }
+        /// <summary>
+        /// I2C bus collection associated with this <see cref="I2cController"/>.
+        /// </summary>
+        /// <remarks>
+        /// This collection is for internal use only.
+        /// </remarks>
+        internal static ArrayList BusIdCollection
+        {
+            get
+            {
+                if (s_busIdCollection == null)
+                {
+                    lock (_syncLock)
+                    {
+                        if (s_busIdCollection == null)
+                        {
+                            s_busIdCollection = new ArrayList();
+                        }
+                    }
+                }
+
+                return s_busIdCollection;
+            }
+
+            set
+            {
+                s_busIdCollection = value;
             }
         }
 
