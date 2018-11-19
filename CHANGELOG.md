@@ -8,6 +8,10 @@
 
 - Fix issue with I2C NativeInit and Dispose [\#33](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/33)
 
+**Documentation and other chores:**
+
+- Bumps nanoFramework.CoreLibrary from 1.0.6-preview-001 to 1.0.6-preview-010 [\#34](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/34)
+
 ## [v1.0.2-preview-010](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.0.2-preview-010) (2018-11-14)
 [Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.0.2-preview-007...v1.0.2-preview-010)
 
