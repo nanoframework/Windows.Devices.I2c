@@ -2,7 +2,14 @@
 
 ## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.0.2-preview-007...HEAD)
+[Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.0.2-preview-010...HEAD)
+
+**Fixed bugs:**
+
+- Fix issue with I2C NativeInit and Dispose [\#33](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/33)
+
+## [v1.0.2-preview-010](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.0.2-preview-010) (2018-11-14)
+[Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.0.2-preview-007...v1.0.2-preview-010)
 
 **Documentation and other chores:**
 
