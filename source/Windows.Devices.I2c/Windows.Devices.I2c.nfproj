@@ -53,6 +53,7 @@
     <Compile Include="I2cBusSpeed.cs" />
     <Compile Include="I2cConnectionSettings.cs" />
     <Compile Include="I2cController.cs" />
+    <Compile Include="I2cControllerManager.cs" />
     <Compile Include="I2cDevice.cs" />
     <Compile Include="I2cSharingMode.cs" />
     <Compile Include="I2cTransferResult.cs" />
