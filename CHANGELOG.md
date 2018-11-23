@@ -1,5 +1,13 @@
 # Change Log
 
+## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/HEAD)
+
+[Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.0.2-preview-015...HEAD)
+
+**Implemented enhancements:**
+
+- Rework I2cController and I2cDevice [\#36](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/36)
+
 ## [v1.0.2-preview-015](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.0.2-preview-015) (2018-11-19)
 [Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.0.2-preview-010...v1.0.2-preview-015)
 
