@@ -13,12 +13,23 @@ namespace Windows.Devices.I2c
     /// </summary>
 	public sealed class I2cDevice : IDisposable
     {
-        // this is used as the lock object 
-        // a lock is required because multiple threads can access the I2C bus
-        private object _syncLock = new object();
+        // the device unique ID for the device is achieve by joining the I2C bus ID and the slave address
+        // should be unique enough by encoding it as: (I2C bus number x 1000 + slave address)
+        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+        private const int deviceUniqueIdMultiplier = 1000;
 
+        // this is used as the lock object 
+        // a lock is required because multiple threads can access the device
+        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+        private readonly object _syncLock = new object();
+
+        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
         private readonly int _deviceId;
+
+        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
         private readonly I2cConnectionSettings _connectionSettings;
+
+        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
         private bool _disposed;
 
         internal I2cDevice(string i2cBus, I2cConnectionSettings settings)
@@ -27,11 +38,26 @@ namespace Windows.Devices.I2c
             // the encoding is (I2C bus number x 1000 + slave address)
             // i2cBus is an ASCII string with the bus name in format 'I2Cn'
             // need to grab 'n' from the string and convert that to the integer value from the ASCII code (do this by subtracting 48 from the char value)
-            var deviceId = (i2cBus[3] - 48) * 1000 + settings.SlaveAddress;
+            var controllerId = i2cBus[3] - 48;
+            var deviceId = (controllerId * deviceUniqueIdMultiplier) + settings.SlaveAddress;
+
+            I2cController controller;
+
+            if (!I2cControllerManager.ControllersCollection.Contains(controllerId))
+            {
+                // this controller doesn't exist yet, create it...
+                controller = new I2cController(i2cBus);
+            }
+            else
+            {
+                // get the controller from the collection...
+                controller = (I2cController)I2cControllerManager.ControllersCollection[controllerId];
+            }
 
             // check if this device ID already exists
-            if (!I2cController.DeviceCollection.Contains(deviceId))
+            if (!controller.DeviceCollection.Contains(deviceId))
             {
+                // device doesn't exist, create it...
                 _connectionSettings = new I2cConnectionSettings(settings.SlaveAddress)
                 {
                     BusSpeed = settings.BusSpeed,
@@ -41,23 +67,17 @@ namespace Windows.Devices.I2c
                 // save device ID
                 _deviceId = deviceId;
 
-                //Instantiate I2C bus once for each bus used
-                if( !I2cController.BusIdCollection.Contains((uint)(i2cBus[3] - 48)))
-                {
-                    I2cController.BusIdCollection.Add((uint)(i2cBus[3] - 48));
-                    NativeInit();
-                }
-                
-                // add to device collection
-                I2cController.DeviceCollection.Add(deviceId, this);
+                // call native init to allow HAL/PAL inits related with I2C hardware
+                NativeInit();
+
+                // ... and add this device
+                controller.DeviceCollection.Add(deviceId, this);
             }
-            /*
             else
             {
-                // this device already exists throw an exception
-                throw new ArgumentException();
+                // this device already exists, throw an exception
+                throw new I2cDeviceAlreadyInUseException();
             }
-            */
         }
 
         /// <summary>
@@ -113,6 +133,7 @@ namespace Windows.Devices.I2c
         /// <remarks>
         /// This method is specific to nanoFramework. The equivalent method in the UWP API is: FromIdAsync.
         /// </remarks>
+        /// <exception cref="I2cDeviceAlreadyInUseException">T</exception>
         public static I2cDevice FromId(String i2cBus, I2cConnectionSettings settings)
         {
             return new I2cDevice(i2cBus, settings);
@@ -127,6 +148,17 @@ namespace Windows.Devices.I2c
         public static string GetDeviceSelector(String friendlyName)
         {
             return GetDeviceSelector();
+        }
+
+        /// <summary>
+        /// Retrieves an Advanced Query Syntax (AQS) string for all of the inter-integrated circuit (I2C) bus controllers on the system. You can use this string with the DeviceInformation.FindAll
+        /// method to get DeviceInformation objects for those bus controllers.
+        /// </summary>
+        /// <returns>An AQS string for all of the I2C bus controllers on the system, which you can use with the DeviceInformation.FindAllAsync method to get DeviceInformation 
+        /// objects for those bus controllers.</returns>
+        public static string GetDeviceSelector()
+        {
+            return I2cController.GetDeviceSelector();
         }
 
         /// <summary>
@@ -219,26 +251,19 @@ namespace Windows.Devices.I2c
             {
                 if (disposing)
                 {
+                    // get the controller Id
+                    // it's enough to divide by the device unique id multiplier as we'll get the thousands digit, which is the controller ID
+                    var controller = (I2cController)I2cControllerManager.ControllersCollection[_deviceId / deviceUniqueIdMultiplier];
+
                     // remove from device collection
-                    I2cController.DeviceCollection.Remove(_deviceId);
-                    /*
-                     * Clear the bus Id from the collection, only if, no other device is using the bus.
-                     * A device Id is 4 digit and starts with digit 1,2,3 etc...which is the bus Id (see FromId method)
-                     */
-                    uint busId = (uint)(_deviceId / 1000);
-                    bool hasDeviceUsingBus = false;
-                    foreach(uint existingDeviceId in I2cController.DeviceCollection.Keys)
+                    controller.DeviceCollection.Remove(_deviceId);
+
+                    // it's OK to also remove the controller, if there is no other device associated
+                    if(controller.DeviceCollection.Count == 0)
                     {
-                        if((uint)(existingDeviceId/1000) == busId)
-                        {
-                            hasDeviceUsingBus = true;
-                            break;
-                        }
-                    }
-                    if (!hasDeviceUsingBus)
-                    {
-                        //no more registered devices using the bus..dispose it
-                        I2cController.BusIdCollection.Remove(busId);
+                        I2cControllerManager.ControllersCollection.Remove(controller);
+
+                        controller = null;
                     }
                 }
 
@@ -270,15 +295,6 @@ namespace Windows.Devices.I2c
         #endregion
 
         #region external calls to native implementations
-
-        /// <summary>
-        /// Retrieves an Advanced Query Syntax (AQS) string for all of the inter-integrated circuit (I2C) bus controllers on the system. You can use this string with the DeviceInformation.FindAll
-        /// method to get DeviceInformation objects for those bus controllers.
-        /// </summary>
-        /// <returns>An AQS string for all of the I2C bus controllers on the system, which you can use with the DeviceInformation.FindAllAsync method to get DeviceInformation 
-        /// objects for those bus controllers.</returns>
-        [MethodImpl(MethodImplOptions.InternalCall)]
-        public static extern string GetDeviceSelector();
 
         [MethodImpl(MethodImplOptions.InternalCall)]
         private extern void NativeInit();

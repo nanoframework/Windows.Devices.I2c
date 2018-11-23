@@ -11,7 +11,10 @@ namespace Windows.Devices.I2c
     /// </summary>
 	public struct I2cTransferResult
     {
+        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
         private uint _bytesTransferred;
+
+        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
         private I2cTransferStatus _status;
 
         /// <summary>
