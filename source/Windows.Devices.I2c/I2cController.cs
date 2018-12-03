@@ -58,18 +58,20 @@ namespace Windows.Devices.I2c
 
         internal I2cController(string controller)
         {
+            // the I2C id is an ASCII string with the format 'I2Cn'
+            // need to grab 'n' from the string and convert that to the integer value from the ASCII code (do this by subtracting 48 from the char value)
+            _controllerId = controller[3] - '0';
+
             // check if this controller is already opened
-            if (!I2cControllerManager.ControllersCollection.Contains(controller))
+            if (!I2cControllerManager.ControllersCollection.Contains(_controllerId))
             {
-                // the I2C id is an ASCII string with the format 'I2Cn'
-                // need to grab 'n' from the string and convert that to the integer value from the ASCII code (do this by subtracting 48 from the char value)
-                _controllerId = controller[3] - '0';
 
                 // call native init to allow HAL/PAL inits related with I2C hardware
                 // this is also used to check if the requested ADC actually exists
                 NativeInit();
 
-                // add controller to collection, with the ID as key (just the index number)
+                // add controller to collection, with the ID as key 
+                // *** just the index number ***
                 I2cControllerManager.ControllersCollection.Add(_controllerId, this);
             }
             else
@@ -90,10 +92,14 @@ namespace Windows.Devices.I2c
 
             if (controllers.Length > 0)
             {
-                if (I2cControllerManager.ControllersCollection.Contains(controllers[0]))
+                // the I2C id is an ASCII string with the format 'I2Cn'
+                // need to grab 'n' from the string and convert that to the integer value from the ASCII code (do this by subtracting 48 from the char value)
+                var controllerId = controllers[0][3] - '0';
+
+                if (I2cControllerManager.ControllersCollection.Contains(controllerId))
                 {
                     // controller is already open
-                    return (I2cController)I2cControllerManager.ControllersCollection[controllers[0]];
+                    return (I2cController)I2cControllerManager.ControllersCollection[controllerId];
                 }
                 else
                 {
