@@ -1,5 +1,12 @@
 # Change Log
 
+## [v1.0.2-preview-025](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.0.2-preview-025) (2018-12-03)
+[Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.0.2-preview-023...v1.0.2-preview-025)
+
+**Fixed bugs:**
+
+- Fix bug with controller search and indexing \#35  [\#41](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/41)
+
 ## [v1.0.2-preview-023](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.0.2-preview-023) (2018-11-30)
 [Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.0.2-preview-020...v1.0.2-preview-023)
 
