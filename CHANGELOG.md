@@ -1,5 +1,69 @@
 # Change Log
 
+## [v1.0.2-preview-028](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.0.2-preview-028) (2018-12-14)
+[Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.0.2-preview-025...v1.0.2-preview-028)
+
+## [v1.0.0](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.0.0) (2018-10-18)
+
+**Documentation and other chores:**
+
+- Bumps nanoFramework.CoreLibrary from 1.0.6-preview-021 to 1.1.0 [\#42](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/42)
+
+## [v1.0.2-preview-025](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.0.2-preview-025) (2018-12-03)
+[Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.0.2-preview-023...v1.0.2-preview-025)
+
+**Fixed bugs:**
+
+- Fix bug with controller search and indexing \#35  [\#41](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/41)
+
+## [v1.0.2-preview-023](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.0.2-preview-023) (2018-11-30)
+[Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.0.2-preview-020...v1.0.2-preview-023)
+
+**Documentation and other chores:**
+
+- Bumps nanoFramework.CoreLibrary from 1.0.6-preview-010 to 1.0.6-preview-021 [\#40](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/40)
+
+## [v1.0.2-preview-020](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.0.2-preview-020) (2018-11-23)
+[Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.0.2-preview-015...v1.0.2-preview-020)
+
+**Implemented enhancements:**
+
+- Rework I2cController and I2cDevice [\#36](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/36)
+
+## [v1.0.2-preview-015](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.0.2-preview-015) (2018-11-19)
+[Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.0.2-preview-010...v1.0.2-preview-015)
+
+**Fixed bugs:**
+
+- Fix issue with I2C NativeInit and Dispose [\#33](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/33)
+
+**Documentation and other chores:**
+
+- Bumps nanoFramework.CoreLibrary from 1.0.6-preview-001 to 1.0.6-preview-010 [\#34](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/34)
+
+## [v1.0.2-preview-010](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.0.2-preview-010) (2018-11-14)
+[Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.0.2-preview-007...v1.0.2-preview-010)
+
+**Documentation and other chores:**
+
+- Fix lazy init and prevent un-necessary calls to NativeInit [\#32](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/32)
+
+## [v1.0.2-preview-007](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.0.2-preview-007) (2018-11-09)
+[Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.0.2-preview-004...v1.0.2-preview-007)
+
+**Implemented enhancements:**
+
+- Add lazy initialization to I2cController [\#31](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/31)
+
+## [v1.0.2-preview-004](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.0.2-preview-004) (2018-11-08)
+[Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.0.0...v1.0.2-preview-004)
+
+**Documentation and other chores:**
+
+- Bumps nanoFramework.CoreLibrary from 1.0.5-preview024 to 1.0.6-preview-001 [\#30](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/30)
+- Bumps nanoFramework.CoreLibrary from 1.0.4 to 1.0.5-preview024 [\#28](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/28)
+- Merge back changes from Release 1.0.0 [\#26](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/26)
+
 ## [v1.0.0](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.0.0) (2018-10-18)
 **Implemented enhancements:**
 

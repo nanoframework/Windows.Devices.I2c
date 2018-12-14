@@ -12,8 +12,13 @@ namespace Windows.Devices.I2c
     /// </summary>
 	public sealed class I2cConnectionSettings
     {
+        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
         private Int32 _slaveAddress;
+
+        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
         private I2cBusSpeed _busSpeed;
+
+        [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
         private I2cSharingMode _sharingMode;
 
         /// <summary>
