@@ -17,7 +17,7 @@
     <summary>Windows.Devices.I2c assembly for nanoFramework C# projects</summary>
     <tags>nanoFramework C# csharp netmf netnf Windows.Devices.I2c</tags>
     <dependencies>
-      <dependency id="nanoFramework.CoreLibrary" version="[1.1.0]" />
+      <dependency id="nanoFramework.CoreLibrary" version="[1.1.1]" />
     </dependencies>
   </metadata>
   <files>
