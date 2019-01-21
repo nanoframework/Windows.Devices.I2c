@@ -6,6 +6,7 @@
 
 **Documentation and other chores:**
 
+- Bumps nanoFramework.CoreLibrary from 1.1.0 to 1.1.1 [\#45](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/45)
 - Merge back from Release v1.1.0 [\#44](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/44)
 
 ## [v1.1.0](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.1.0) (2018-12-14)
