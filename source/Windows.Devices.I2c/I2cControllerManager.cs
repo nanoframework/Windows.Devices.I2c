@@ -9,7 +9,7 @@ namespace Windows.Devices.I2c
 {
     internal sealed class I2cControllerManager
     {
-        private static readonly object _syncLock = new object();
+        private static object _syncLock;
 
         // backing field for ControllersCollection
         // to store the controllers that are open
@@ -27,6 +27,11 @@ namespace Windows.Devices.I2c
             {
                 if (s_controllersCollection == null)
                 {
+                    if(_syncLock == null)
+                    {
+                        _syncLock = new object();
+                    }
+
                     lock (_syncLock)
                     {
                         if (s_controllersCollection == null)
