@@ -17,7 +17,7 @@ namespace Windows.Devices.I2c
         // this is used as the lock object 
         // a lock is required because multiple threads can access the I2cController
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-        private readonly object _syncLock = new object();
+        private readonly object _syncLock;
 
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
         private readonly int _controllerId;
@@ -65,6 +65,7 @@ namespace Windows.Devices.I2c
             // check if this controller is already opened
             if (!I2cControllerManager.ControllersCollection.Contains(_controllerId))
             {
+                _syncLock = new object();
 
                 // call native init to allow HAL/PAL inits related with I2C hardware
                 // this is also used to check if the requested ADC actually exists
