@@ -1,5 +1,17 @@
 # Change Log
 
+## [v1.1.3](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.1.3) (2019-02-04)
+[Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.1.2...v1.1.3)
+
+**Implemented enhancements:**
+
+- Static field objects are now created on constructor. [\#48](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/48)
+
+**Documentation and other chores:**
+
+- Release v1.1.3 [\#49](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/49)
+- Merge back from Release v1.1.2 [\#47](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/47)
+
 ## [v1.1.2](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.1.2) (2019-01-21)
 [Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.1.0...v1.1.2)
 
