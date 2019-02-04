@@ -4,6 +4,10 @@
 
 [Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.1.2...HEAD)
 
+**Implemented enhancements:**
+
+- Static field objects are now created on constructor. [\#48](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/48)
+
 **Documentation and other chores:**
 
 - Merge back from Release v1.1.2 [\#47](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/47)
