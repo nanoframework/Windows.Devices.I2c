@@ -1,8 +1,7 @@
 # Change Log
 
-## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/HEAD)
-
-[Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.1.3...HEAD)
+## [v1.1.4-preview](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.1.4-preview) (2019-04-23)
+[Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.1.3...v1.1.4-preview)
 
 **Documentation and other chores:**
 
