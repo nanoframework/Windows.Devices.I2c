@@ -251,6 +251,8 @@ namespace Windows.Devices.I2c
         {
             if (!_disposed)
             {
+                bool disposeController = false;
+
                 if (disposing)
                 {
                     // get the controller Id
@@ -266,10 +268,13 @@ namespace Windows.Devices.I2c
                         I2cControllerManager.ControllersCollection.Remove(controller);
 
                         controller = null;
+
+                        // flag this to native dispose
+                        disposeController = true;
                     }
                 }
 
-                DisposeNative();
+                NativeDispose(disposeController);
 
                 _disposed = true;
             }
@@ -302,7 +307,7 @@ namespace Windows.Devices.I2c
         private extern void NativeInit();
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        private extern void DisposeNative();
+        private extern void NativeDispose(bool disposeController);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
         private extern I2cTransferResult NativeTransmit(byte[] writeBuffer, byte[] readBuffer);
