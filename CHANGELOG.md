@@ -1,5 +1,16 @@
 # Change Log
 
+## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/HEAD)
+
+[Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.1.5-preview-001...HEAD)
+
+**Implemented enhancements:**
+
+- Work on I2cDevice dispose [\#52](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/52)
+
+## [v1.1.5-preview-001](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.1.5-preview-001) (2019-04-23)
+[Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.1.4-preview...v1.1.5-preview-001)
+
 ## [v1.1.4-preview](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.1.4-preview) (2019-04-23)
 [Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.1.3...v1.1.4-preview)
 
