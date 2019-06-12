@@ -2,7 +2,14 @@
 
 ## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.1.5-preview-005...HEAD)
+[Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.1.6-preview.2...HEAD)
+
+**Documentation and other chores:**
+
+- Bumps nanoFramework.CoreLibrary from 1.2.4-preview.1 to 1.2.5-preview.1 [\#57](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/57)
+
+## [v1.1.6-preview.2](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.1.6-preview.2) (2019-06-12)
+[Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.1.5-preview-005...v1.1.6-preview.2)
 
 **Documentation and other chores:**
 
