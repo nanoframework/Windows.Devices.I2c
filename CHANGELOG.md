@@ -6,6 +6,7 @@
 
 **Documentation and other chores:**
 
+- Bumps nanoFramework.CoreLibrary from 1.2.6-preview.1 to 1.2.6-preview.7 [\#61](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/61)
 - Work on native assembly declaration [\#59](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/59) [[Breaking-Change](https://github.com/nanoframework/lib-Windows.Devices.I2c/labels/Breaking-Change)]
 
 ## [v1.1.6-preview.9](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.1.6-preview.9) (2019-06-20)
