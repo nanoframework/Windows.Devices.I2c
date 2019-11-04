@@ -13,7 +13,7 @@ namespace Windows.Devices.I2c
 
         // backing field for ControllersCollection
         // to store the controllers that are open
-        private static Hashtable s_controllersCollection;
+        private static ArrayList s_controllersCollection;
 
         /// <summary>
         /// <see cref="I2cController"/> collection.
@@ -21,7 +21,7 @@ namespace Windows.Devices.I2c
         /// <remarks>
         /// This collection is for internal use only.
         /// </remarks>
-        internal static Hashtable ControllersCollection
+        internal static ArrayList ControllersCollection
         {
             get
             {
@@ -36,7 +36,7 @@ namespace Windows.Devices.I2c
                     {
                         if (s_controllersCollection == null)
                         {
-                            s_controllersCollection = new Hashtable();
+                            s_controllersCollection = new ArrayList();
                         }
                     }
                 }

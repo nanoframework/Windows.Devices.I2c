@@ -20,11 +20,11 @@ namespace Windows.Devices.I2c
         private readonly object _syncLock;
 
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-        private readonly int _controllerId;
+        internal readonly int _controllerId;
 
         // backing field for DeviceCollection
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-        private Hashtable s_deviceCollection;
+        private ArrayList s_deviceCollection;
 
         /// <summary>
         /// Device collection associated with this <see cref="I2cController"/>.
@@ -32,7 +32,7 @@ namespace Windows.Devices.I2c
         /// <remarks>
         /// This collection is for internal use only.
         /// </remarks>
-        internal Hashtable DeviceCollection
+        internal ArrayList DeviceCollection
         {
             get
             {
@@ -42,7 +42,7 @@ namespace Windows.Devices.I2c
                     {
                         if (s_deviceCollection == null)
                         {
-                            s_deviceCollection = new Hashtable();
+                            s_deviceCollection = new ArrayList();
                         }
                     }
                 }
@@ -63,7 +63,7 @@ namespace Windows.Devices.I2c
             _controllerId = controller[3] - '0';
 
             // check if this controller is already opened
-            if (!I2cControllerManager.ControllersCollection.Contains(_controllerId))
+            if (FindController(_controllerId) == null)
             {
                 _syncLock = new object();
 
@@ -73,7 +73,7 @@ namespace Windows.Devices.I2c
 
                 // add controller to collection, with the ID as key 
                 // *** just the index number ***
-                I2cControllerManager.ControllersCollection.Add(_controllerId, this);
+                I2cControllerManager.ControllersCollection.Add(this);
             }
             else
             {
@@ -122,6 +122,19 @@ namespace Windows.Devices.I2c
         {
             //TODO: fix return value. Should return an existing device (if any)
             return new I2cDevice(String.Empty, settings);
+        }
+
+        internal static I2cController FindController(int index)
+        {
+            for (int i = 0; i < I2cControllerManager.ControllersCollection.Count; i++)
+            {
+                if (((I2cController)I2cControllerManager.ControllersCollection[i])._controllerId == index)
+                {
+                    return (I2cController)I2cControllerManager.ControllersCollection[i];
+                }
+            }
+
+            return null;
         }
 
         #region Native Calls
