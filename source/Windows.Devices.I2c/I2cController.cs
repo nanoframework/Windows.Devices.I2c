@@ -97,7 +97,9 @@ namespace Windows.Devices.I2c
                 // need to grab 'n' from the string and convert that to the integer value from the ASCII code (do this by subtracting 48 from the char value)
                 var controllerId = controllers[0][3] - '0';
 
-                if (I2cControllerManager.ControllersCollection.Contains(controllerId))
+                var myController = FindController(controllerId);
+
+                if (myController != null)
                 {
                     // controller is already open
                     return (I2cController)I2cControllerManager.ControllersCollection[controllerId];
