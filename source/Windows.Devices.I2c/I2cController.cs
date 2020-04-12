@@ -17,7 +17,7 @@ namespace Windows.Devices.I2c
         // this is used as the lock object 
         // a lock is required because multiple threads can access the I2cController
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-        private readonly object _syncLock;
+        private object _syncLock;
 
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
         internal readonly int _controllerId;
@@ -38,6 +38,11 @@ namespace Windows.Devices.I2c
             {
                 if (s_deviceCollection == null)
                 {
+                    if (_syncLock == null)
+                    {
+                        _syncLock = new object();
+                    }
+
                     lock (_syncLock)
                     {
                         if (s_deviceCollection == null)
