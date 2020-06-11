@@ -21,7 +21,7 @@ namespace Windows.Devices.I2c
         // this is used as the lock object 
         // a lock is required because multiple threads can access the device
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
-        private readonly object _syncLock;
+        private object _syncLock;
 
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
         private readonly int _deviceId;
@@ -41,21 +41,18 @@ namespace Windows.Devices.I2c
             var controllerId = i2cBus[3] - 48;
             var deviceId = (controllerId * deviceUniqueIdMultiplier) + settings.SlaveAddress;
 
-            I2cController controller;
+            I2cController controller = I2cController.FindController(controllerId);
 
-            if (!I2cControllerManager.ControllersCollection.Contains(controllerId))
+            if (controller == null)
             {
                 // this controller doesn't exist yet, create it...
                 controller = new I2cController(i2cBus);
             }
-            else
-            {
-                // get the controller from the collection...
-                controller = (I2cController)I2cControllerManager.ControllersCollection[controllerId];
-            }
 
             // check if this device ID already exists
-            if (!controller.DeviceCollection.Contains(deviceId))
+            var device = FindDevice(controller, deviceId);
+
+            if (device == null)
             {
                 // device doesn't exist, create it...
                 _connectionSettings = new I2cConnectionSettings(settings.SlaveAddress)
@@ -71,7 +68,7 @@ namespace Windows.Devices.I2c
                 NativeInit();
 
                 // ... and add this device
-                controller.DeviceCollection.Add(deviceId, this);
+                controller.DeviceCollection.Add(this);
 
                 _syncLock = new object();
             }
@@ -255,22 +252,28 @@ namespace Windows.Devices.I2c
 
                 if (disposing)
                 {
-                    // get the controller Id
-                    // it's enough to divide by the device unique id multiplier as we'll get the thousands digit, which is the controller ID
-                    var controller = (I2cController)I2cControllerManager.ControllersCollection[_deviceId / deviceUniqueIdMultiplier];
+                    // get the controller
+                    var controller = I2cController.FindController(_deviceId / deviceUniqueIdMultiplier);
 
-                    // remove from device collection
-                    controller.DeviceCollection.Remove(_deviceId);
-
-                    // it's OK to also remove the controller, if there is no other device associated
-                    if(controller.DeviceCollection.Count == 0)
+                    if (controller != null)
                     {
-                        I2cControllerManager.ControllersCollection.Remove(controller);
+                        // find device
+                        var device = FindDevice(controller, _deviceId);
 
-                        controller = null;
+                        if (device != null)
+                        {
+                            // remove from device collection
+                            controller.DeviceCollection.Remove(device);
 
-                        // flag this to native dispose
-                        disposeController = true;
+                            // it's OK to also remove the controller, if there is no other device associated
+                            if (controller.DeviceCollection.Count == 0)
+                            {
+                                I2cControllerManager.ControllersCollection.Remove(controller);
+
+                                // flag this to native dispose
+                                disposeController = true;
+                            }
+                        }
                     }
                 }
 
@@ -300,6 +303,19 @@ namespace Windows.Devices.I2c
         }
 
         #endregion
+
+        internal static I2cDevice FindDevice(I2cController controller, int index)
+        {
+            for (int i = 0; i < controller.DeviceCollection.Count; i++)
+            {
+                if (((I2cDevice)controller.DeviceCollection[i])._deviceId == index)
+                {
+                    return (I2cDevice)controller.DeviceCollection[i];
+                }
+            }
+
+            return null;
+        }
 
         #region external calls to native implementations
 
