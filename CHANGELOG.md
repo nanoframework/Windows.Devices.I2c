@@ -6,6 +6,7 @@
 
 **Documentation and other chores:**
 
+- Release release-v1.3.2 [\#87](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/87)
 - Bumps nanoFramework.CoreLibrary from 1.7.3-preview.4 to 1.7.3 [\#86](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/86)
 
 ## [v1.3.2-preview.8](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.3.2-preview.8) (2020-05-29)
