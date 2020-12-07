@@ -20,7 +20,7 @@ This package requires a target with Windows.Devices.I2c v$nativeVersion$.</descr
     <summary>Windows.Devices.I2c assembly for nanoFramework C# projects</summary>
     <tags>nanoFramework C# csharp netmf netnf Windows.Devices.I2c</tags>
     <dependencies>
-      <dependency id="nanoFramework.CoreLibrary" version="1.9.1-preview.6" />
+      <dependency id="nanoFramework.CoreLibrary" version="1.10.0-preview.4" />
     </dependencies>
   </metadata>
   <files>
