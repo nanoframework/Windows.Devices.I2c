@@ -4,6 +4,10 @@
 
 -----
 
+## ⚠️ This library is now deprecated and has been replaced with [System.Device.I2c](https://github.com/nanoframework/System.Device.I2c). Please use that one instead. ⚠️
+
+-----
+
 ### Welcome to the **nanoFramework** Windows.Devices.I2c Library repository!
 
 ## Build status
