@@ -1,5 +1,102 @@
 # Changelog
 
+## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/HEAD)
+
+[Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.4.1-preview.29...HEAD)
+
+**Documentation and other chores:**
+
+- Bumps nanoFramework.CoreLibrary from 1.10.1-preview.11 to 1.10.3-preview.7 [\#100](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/100)
+
+## [v1.4.1-preview.29](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.4.1-preview.29) (2021-03-02)
+
+[Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.4.1-preview.24...v1.4.1-preview.29)
+
+**Documentation and other chores:**
+
+- Bumps nanoFramework.CoreLibrary from 1.10.1-preview.9 to 1.10.1-preview.11 [\#99](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/99)
+- Update 2 nuget dependencies [\#98](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/98)
+
+## [v1.4.1-preview.24](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.4.1-preview.24) (2021-01-06)
+
+[Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.4.1-preview.22...v1.4.1-preview.24)
+
+**Documentation and other chores:**
+
+- Bumps nanoFramework.CoreLibrary from 1.10.1-preview.7 to 1.10.1-preview.9 [\#97](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/97)
+
+## [v1.4.1-preview.22](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.4.1-preview.22) (2020-12-29)
+
+[Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.4.1-preview.19...v1.4.1-preview.22)
+
+**Documentation and other chores:**
+
+- Bumps nanoFramework.CoreLibrary from 1.10.1-preview.6 to 1.10.1-preview.7 [\#96](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/96)
+
+## [v1.4.1-preview.19](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.4.1-preview.19) (2020-12-28)
+
+[Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.4.1-preview.17...v1.4.1-preview.19)
+
+**Documentation and other chores:**
+
+- Bumps nanoFramework.CoreLibrary from 1.10.0-preview.4 to 1.10.1-preview.6 [\#95](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/95)
+
+## [v1.4.1-preview.17](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.4.1-preview.17) (2020-12-07)
+
+[Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.4.1-preview.15...v1.4.1-preview.17)
+
+**Documentation and other chores:**
+
+- Bumps nanoFramework.CoreLibrary from 1.9.1-preview.6 to 1.10.0-preview.4 [\#94](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/94)
+
+## [v1.4.1-preview.15](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.4.1-preview.15) (2020-10-20)
+
+[Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.4.1-preview.13...v1.4.1-preview.15)
+
+**Documentation and other chores:**
+
+- Bumps nanoFramework.CoreLibrary from 1.9.1-preview.4 to 1.9.1-preview.6 [\#93](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/93)
+
+## [v1.4.1-preview.13](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.4.1-preview.13) (2020-10-20)
+
+[Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.4.1-preview.11...v1.4.1-preview.13)
+
+**Documentation and other chores:**
+
+- Bumps nanoFramework.CoreLibrary from 1.9.0-preview.5 to 1.9.1-preview.4 [\#92](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/92)
+
+## [v1.4.1-preview.11](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.4.1-preview.11) (2020-09-30)
+
+[Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.4.1-preview.9...v1.4.1-preview.11)
+
+**Documentation and other chores:**
+
+- Bumps nanoFramework.CoreLibrary from 1.8.0-preview.11 to 1.9.0-preview.5 [\#91](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/91)
+
+## [v1.4.1-preview.9](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.4.1-preview.9) (2020-09-30)
+
+[Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.4.1-preview.2...v1.4.1-preview.9)
+
+**Documentation and other chores:**
+
+- Bumps nanoFramework.CoreLibrary from 1.8.0-preview.6 to 1.8.0-preview.11 [\#90](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/90)
+
+## [v1.4.1-preview.2](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.4.1-preview.2) (2020-09-19)
+
+[Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.4.0...v1.4.1-preview.2)
+
+**Documentation and other chores:**
+
+- Update dependencies [\#89](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/89)
+
+## [v1.4.0](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.4.0) (2020-06-17)
+
+[Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.3.2...v1.4.0)
+
+**Documentation and other chores:**
+
+- Release release-v1.4.0 [\#88](https://github.com/nanoframework/lib-Windows.Devices.I2c/pull/88)
+
 ## [v1.3.2](https://github.com/nanoframework/lib-Windows.Devices.I2c/tree/v1.3.2) (2020-06-11)
 
 [Full Changelog](https://github.com/nanoframework/lib-Windows.Devices.I2c/compare/v1.3.2-preview.8...v1.3.2)
