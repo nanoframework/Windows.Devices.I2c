@@ -14,8 +14,7 @@
 
 | Component | Build Status | NuGet Package |
 |:-|---|---|
-| Windows.Devices.I2c | [![Build Status](https://dev.azure.com/nanoframework/Windows.Devices.I2c/_apis/build/status/nanoframework.lib-Windows.Devices.I2c?branchName=develop)](https://dev.azure.com/nanoframework/Windows.Devices.I2c/_build/latest?definitionId=28?branchName=master) | [![NuGet](https://img.shields.io/nuget/v/nanoFramework.Windows.Devices.I2c.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/nanoFramework.Windows.Devices.I2c/) |
-| Windows.Devices.I2c (preview) | [![Build Status](https://dev.azure.com/nanoframework/Windows.Devices.I2c/_apis/build/status/nanoframework.lib-Windows.Devices.I2c?branchName=develop)](https://dev.azure.com/nanoframework/Windows.Devices.I2c/_build/latest?definitionId=28?branchName=develop) | [![](https://badgen.net/badge/NuGet/preview/D7B023?icon=https://simpleicons.now.sh/azuredevops/fff)](https://dev.azure.com/nanoframework/feed/_packaging?_a=package&feed=sandbox&package=nanoFramework.Windows.Devices.I2c&protocolType=NuGet&view=overview) |
+| Windows.Devices.I2c | [![Build Status](https://dev.azure.com/nanoframework/Windows.Devices.I2c/_apis/build/status/Windows.Devices.I2c?repoName=nanoframework%2FWindows.Devices.I2c&branchName=main)](https://dev.azure.com/nanoframework/Windows.Devices.I2c/_build/latest?definitionId=28&repoName=nanoframework%2FWindows.Devices.I2c&branchName=main) | [![NuGet](https://img.shields.io/nuget/v/nanoFramework.Windows.Devices.I2c.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/nanoFramework.Windows.Devices.I2c/) |
 
 ## Feedback and documentation
 
